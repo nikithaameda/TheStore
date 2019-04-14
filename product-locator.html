@@ -13,30 +13,32 @@
 <div class="wrapper">
         <div class="container app-container">
             <div class="navbar navbar-expand-sm "> 
-                <div class="nav-link-left">
-                    <a class="nav-link" href="index.html">Needle in HayStack Finder</a>
+                <div class="nav-link-left" onclick="javascript:window.location.href='index.html'">
+                        <img src="images/instaLocateTransparentLogo.png" class="logo">
                 </div>
                 <div class="float-right nav-link-right">
-                    <a class="nav-link float-right" href="#technical-skills">Login</a>
-                    <a class="nav-link float-right" href="#technical-skills">Signup</a>
+                    <a class="nav-link float-right" href="login.html">Login</a>
+                    <a class="nav-link float-right" href="register.html">Register</a>
                 </div>
             </div>
             <nav class="navbar navbar-expand-sm bg-light app-navbar"> 
                 <a class="nav-link active" href="#">Find Products</a>
                 <a class="nav-link" href="recipeLocator.html">Search by recipe</a>
-                <a class="nav-link" href="#">Shop Online</a>
-                <a class="nav-link" href="#">Shop Clearence</a>
+                <a class="nav-link" href="shop.html">Shop Online</a>
+                <a class="nav-link" href="shoppingList.html">Create Shopping List</a>
                 <a class="nav-link" href="trackSteps.html">Track steps</a>
                 <a class="nav-link" href="#">Learn what's happening</a>
             </nav>
             <div class="product-container">
                 <div class="product-search">
-                    <input type="text" placeholder="Search by Product name">
+                    <input type="text" class="js-product" placeholder="Search by Product name">
                     <i class="fas fa-microphone fa-lg" style="color: #59bff2;"></i>
                 </div>  
                 <div class="product-container-buttons-div">
-                    <button class="button">Search products</button>
-                </div
+                    <button class="button js-search-product">Search products</button>
+                    <br><br>
+                    <div class="alert alert-warning js-product-alert hide"><strong>Sorry!</strong> Please search for another product.</div>
+                </div>
             </div>
         </div>
 </div>

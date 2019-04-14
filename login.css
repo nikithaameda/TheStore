@@ -1,0 +1,122 @@
+body {
+    background: url("images/loginBack.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+}
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color:#f4fffc !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #59bff2;
+}
+
+.social_icon span:hover{
+color: #59bff2;
+cursor: pointer;
+}
+
+.card-header h3{
+color: #59bff2;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #59bff2;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: #59bff2;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #59bff2;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: #59bff2;
+}
+
+.links{
+color: #59bff2;
+}
+
+.links a{
+margin-left: 4px;
+}
+
+/*register*/
+.logo {
+    width: 300px;
+    box-shadow: 5px 5px 5px gray;
+}
+.register-form .navbar {
+    border: 2px solid #59bff2;
+}
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #59bff2, #f4fffc);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.note p{
+    font-size: 30px;
+    color: black;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+    background: #ced4da;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.btnSubmit
+{
+    border:none;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #59bff2;
+    color: #fff;
+}

@@ -11,33 +11,99 @@
 </head>
 <body>
 <div class="wrapper">
-        <div class="container app-container">
+        <div class="container app-container recipe">
             <div class="navbar navbar-expand-sm "> 
-                <div class="nav-link-left">
-                    <a class="nav-link" href="index.html">Needle in HayStack Finder</a>
+                <div class="nav-link-left" onclick="javascript:window.location.href='index.html'">
+                    <img src="images/instaLocateTransparentLogo.png" class="logo">
                 </div>
                 <div class="float-right nav-link-right">
-                    <a class="nav-link float-right" href="#technical-skills">Login</a>
-                    <a class="nav-link float-right" href="#technical-skills">Signup</a>
+                    <a class="nav-link float-right" href="login.html">Login</a>
+                    <a class="nav-link float-right" href="register.html">Register</a>
                 </div>
             </div>
             <nav class="navbar navbar-expand-sm bg-light app-navbar"> 
                 <a class="nav-link" href="product-locator.html">Find Products</a>
                 <a class="nav-link active" href="#">Search by recipe</a>
-                <a class="nav-link" href="#">Shop Online</a>
-                <a class="nav-link" href="#">Shop Clearence</a>
+                <a class="nav-link" href="shop.html">Shop Online</a>
+                <a class="nav-link" href="shoppingList.html">Create Shopping List</a>
                 <a class="nav-link" href="trackSteps.html">Track steps</a>
                 <a class="nav-link" href="#">Learn what's happening</a>
             </nav>
             <div class="product-container">
-                <div class="product-search">
-                    <input type="text" placeholder="Search by recipe">
+                <div class="product-search product-recipe-search">
+                    <input type="text" placeholder="Search by recipe" class="js-recipe">
                     <i class="fas fa-microphone fa-lg" style="color: #59bff2;"></i>
                 </div>  
-                <div class="product-container-buttons-div">
-                    <button class="button">Search products by recipe</button>
-                </div
+                <div class="product-container-buttons-div product-container-recipe-buttons-div">
+                    <button class="button m-3 js-recipe-search">Search products by recipe</button>
+                    <button class="button">Load Shopping List</button>
+                </div>
             </div>
+            <br />
+            <div class="results hide js-results">
+                <div class="alert alert-warning js-recipe-alert hide"><strong>Sorry!</strong> Please search for another recipe.</div>
+                <label class="js-title recipe-title"></label>
+                <br>
+                <div class="js-reciperesults row">
+
+                </div>
+                <br>
+                <div class="text-center js-locate-recipe">
+                    <button class="button" onclick="javascript:window.location.href='map.html'">Locate Ingredients</button>
+                </div>
+            </div>
+            <div class="js-recipe-suggessions">
+                <div class="text-center">
+                    <h3>Top Rated Searches</h3>
+                </div>
+                <div class="top-rated-recipes row bg-light">
+                    <div class="col-sm-3">
+                        <h5>I want to Cook Pasta</h5>
+                        <label>Ingredients</label>
+                        <ul>
+                            <li>Tomatoes</li>
+                            <li>Onions</li>
+                            <li>Cheese</li>
+                            <li>Pasta</li>
+                        </ul>
+                    <label class="text-primary more">See more...</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5>I want to make pancakes</h5>
+                        <label>Ingredients</label>
+                        <ul>
+                            <li>Flour</li>
+                            <li>Eggs</li>
+                            <li>Baking powder</li>
+                            <li>Sugar</li>
+                        </ul>
+                        <label class="text-primary more">See more...</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5>I want to make pizza</h5>
+                        <label>Ingredients</label>
+                        <ul>
+                            <li>Flour</li>
+                            <li>Eggs</li>
+                            <li>Baking powder</li>
+                            <li>Cheese</li>
+                        </ul>
+                        <label class="text-primary more">See more...</label>
+                    </div>
+                    <div class="col-sm-3">
+                            <h5>I want to make Waffles</h5>
+                            <label>Ingredients</label>
+                            <ul>
+                                <li>Flour</li>
+                                <li>Eggs</li>
+                                <li>Baking powder</li>
+                                <li>Milk</li>
+                            </ul>
+                            <label class="text-primary more">See more...</label>
+                        </div>
+                </div>
+            </div>
+            <br />
         </div>
 </div>
 </body>
