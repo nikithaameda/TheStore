@@ -66,7 +66,8 @@ background: url(images/math.jpg) no-repeat center center;
     transition: transform 1s ease-in-out;
 }
 .cart-button {
-    width: 100%;
+    width: 90%;
+    margin-bottom: 10px;
 }
 .menu-left-buttons:hover, .menu-right-buttons:hover, .technologies-used img:hover {
     -ms-transform: scale(1.1); /* IE 9 */
@@ -228,6 +229,7 @@ background: url(images/math.jpg) no-repeat center center;
 }
 .hot-offer-list {
     border: 1px solid #59bff2;
+    text-align: center;
 }
 .map-image {
     width: 818px;
