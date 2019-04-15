@@ -229,10 +229,12 @@ background: url(images/math.jpg) no-repeat center center;
 }
 .store-hot-images {
     padding: 20px 0;
+    background: #59bff2;
 }
 .hot-offer-list {
-    border: 1px solid #59bff2;
+    border: 1px solid black;
     text-align: center;
+    background: #f4fffc;
 }
 .map-image {
     width: 818px;
