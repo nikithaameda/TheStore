@@ -6,6 +6,7 @@ html, body {
     height: 100%;
 }
 .app-container {
+    display: table;
     background: #f4fffc;
     padding: 0;
     box-shadow: 1px -2px 10px 3px grey; 
@@ -247,11 +248,53 @@ background: url(images/math.jpg) no-repeat center center;
     top: -56px;
     left: 309px;
 }
+.here-image label {
+    width: 114px;
+    position: absolute;
+    top: 101px;
+    left: 329px;
+    background: darkred;
+    color: white;
+    border-radius: 5px;
+}
+.here-image-recipe img {
+    width: 150px;
+    position: absolute;
+    top: -93px;
+    left: 322px;
+}
+.here-image-recipe label {
+    width: 114px;
+    position: absolute;
+    top: 62px;
+    left: 338px;
+    background: darkred;
+    color: white;
+    border-radius: 5px;
+}
 .arrow-image img {
     position: absolute;
     top: 261px;
     width: 100px;
     right: 142px;
+}
+.arrow-image1 img {
+    position: absolute;
+    top: 162px;
+    width: 80px;
+    right: 215px;
+}
+.arrow-image2 img {
+    position: absolute;
+    top: 133px;
+    width: 80px;
+    right: 371px;
+}
+.arrow-image3 img {
+    position: absolute;
+    top: 133px;
+    width: 80px;
+    right: 313px;
 }
 @media (min-width: 768px) and (max-width: 992px) {
     .app-container {

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InstaLocate</title>
+    <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-free-5.8.1-web/css/all.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="Winwheel.js"></script>
+    <script src="TweenMax.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="wrapper">
+        <div class="container app-container">
+            <div class="navbar navbar-expand-sm "> 
+                <div class="nav-link-left" onclick="javascript:window.location.href='index.html'">
+                        <img src="images/instaLocateTransparentLogo.png" class="logo">
+                </div>
+                <div class="float-right nav-link-right">
+                    <a class="nav-link float-right" href="login.html">Login</a>
+                    <a class="nav-link float-right" href="register.html">Register</a>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-sm bg-light app-navbar"> 
+                <a class="nav-link" href="product-locator.html">Find Products</a>
+                <a class="nav-link" href="recipeLocator.html">Search by recipe</a>
+                <a class="nav-link" href="shop.html">Shop Online</a>
+                <a class="nav-link" href="shoppingList.html">Create Shopping List</a>
+                <a class="nav-link" href="trackSteps.html">Track steps</a>
+                <a class="nav-link" href="#">Learn what's happening</a>
+            </nav>
+                <div align="center" class="spin-wheel">
+                    <h2>Event of the day:</h2>
+            <h3 class="spin-title">Spin and Win<span><img class="settings" id="myBtn" src="settings.png" alt="settings" /></span></h3>
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td>
+                        <div class="power_controls">
+                            <br />
+                            <img id="spin_button" src="spin_on.png" alt="Spin" onClick="startSpin();" />
+                            <br /><br />
+                            &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Reset</a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </td>
+                    <td width="500" height="500" align="center" valign="center" id="canvasContainer">
+                        <canvas id="canvas" width="500" height="500">
+                            <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+                        </canvas>
+                        <img id="prizePointer" src="arrow.png" alt="V" />
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="form">
+                    <label>Enter secret code:</label>
+                    <input type="text" id="code" placeholder="code">
+                    <button id="submit" onclick="submitCode()">Submit</button>
+                    <span class="error" id="error">Incorrect code!</span>
+                </div>
+                <div id="settings-div">
+                    <table class="settings-table">
+                        <tr>
+                            <th>Title</th>
+                            <th>ON</th>
+                            <th>OFF</th>
+                        </tr>
+                        <tr>
+                            <td>Prize 1</td>
+                            <td><input type="radio" name="prize1" value="ON"></td>
+                            <td><input type="radio" name="prize1" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 2</td>
+                            <td><input type="radio" name="prize2" value="ON"></td>
+                            <td><input type="radio" name="prize2" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 3</td>
+                            <td><input type="radio" name="prize3" value="ON"></td>
+                            <td><input type="radio" name="prize3" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 4</td>
+                            <td><input type="radio" name="prize4" value="ON"></td>
+                            <td><input type="radio" name="prize4" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 5</td>
+                            <td><input type="radio" name="prize5" value="ON"></td>
+                            <td><input type="radio" name="prize5" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 6</td>
+                            <td><input type="radio" name="prize6" value="ON"></td>
+                            <td><input type="radio" name="prize6" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 7</td>
+                            <td><input type="radio" name="prize7" value="ON"></td>
+                            <td><input type="radio" name="prize7" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 8</td>
+                            <td><input type="radio" name="prize8" value="ON"></td>
+                            <td><input type="radio" name="prize8" value="OFF" checked></td>
+                        </tr>
+                        <tr>
+                            <td>Prize 9</td>
+                            <td><input type="radio" name="prize9" value="ON" checked></td>
+                            <td><input type="radio" name="prize9" value="OFF"></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+                <br />
+        </div>
+</div>
+
+<script>
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {
+                document.getElementById("code").value = '';
+                document.getElementById("form").style.display = "block";
+                document.getElementById("settings-div").style.display = "none";
+                document.getElementById("error").style.display = "none";
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            function submitCode() {
+                var code = document.getElementById("code").value;
+                if (code == 1888) {
+                    document.getElementById("form").style.display = "none";
+                    document.getElementById("settings-div").style.display = "block";
+                } else {
+                    document.getElementById("error").style.display = "block";
+                }
+            }
+            // Create new wheel object specifying the parameters at creation time.
+            var theWheel = new Winwheel({
+                'numSegments'  : 10,     // Specify number of segments.
+                'outerRadius'  : 250,   // Set outer radius so wheel fits inside the background.
+                'textFontSize' : 28,    // Set font size as desired.
+                'segments'     :        // Define segments including colour and text.
+                [
+                   {'fillStyle' : '#f88', 'text' : 'Prize 1'},
+                   {'fillStyle' : '#89f26e', 'text' : 'Prize 2'},
+                   {'fillStyle' : '#7de6ef', 'text' : 'Prize 3'},
+                   {'fillStyle' : '#34a8a8', 'text' : 'Prize 4'},
+                   {'fillStyle' : '#fbc', 'text' : 'Prize 5'},
+                   {'fillStyle' : '#f88', 'text' : 'Prize 6'},
+                   {'fillStyle' : '#89f26e', 'text' : 'Prize 7'},
+                   {'fillStyle' : '#7de6ef', 'text' : 'Prize 8'},
+                   {'fillStyle' : '#34a8a8', 'text' : 'Prize 9'},
+                   {'fillStyle' : '#fbc', 'text' : 'Prize 10'}
+                ],
+                'animation' :           // Specify the animation to use.
+                {
+                    'type'     : 'spinToStop',
+                    'duration' : 8,     // Duration in seconds.
+                    'spins'    : 8,     // Number of complete spins.
+                    //'callbackSound' : playSound,    // Specify function to call when sound is to be triggered
+                    'callbackFinished' : stopSound
+                }
+            });
+
+
+            var audio = new Audio('wheel.mp3');
+            var congratsAudio = new Audio('congratulations.mp3');
+            function playSound()
+            {
+                 // Create audio object and load desired file.
+                // Stop and rewind the sound (stops it if already playing).
+                audio.pause();
+                audio.currentTime = 0;
+
+                // Play the sound.
+                audio.play();
+            }
+
+            // Called when the animation has finished.
+            function stopSound()
+            {
+                // Stop and rewind the sound (stops it if still playing).
+                audio.pause();
+                audio.currentTime = 0;
+
+                // Stop and rewind the sound (stops it if already playing).
+                congratsAudio.pause();
+                congratsAudio.currentTime = 0;
+
+                // Play the sound.
+                congratsAudio.play();
+            }
+
+            var wheelSpinning = false;
+            var spinCount = 0;
+
+            // -------------------------------------------------------
+            // Click handler for spin button.
+            // -------------------------------------------------------
+            function startSpin()
+            {
+                // Ensure that spinning can't be clicked again while already running.
+                if (wheelSpinning == false)
+                {
+                    playSound();
+                    spinCount++;
+
+                    // This formula always makes the wheel stop somewhere inside prize 3 at least
+                    // 1 degree away from the start and end edges of the segment.
+                    var randomNumer = Math.floor(Math.random() * 100) + 1;
+                    var stopAt;
+                    //console.log("randomNumber:" + randomNumer);
+                    /*if (document.querySelector('input[name=prize1]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 17; // prize 1
+                    } else if (document.querySelector('input[name=prize2]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 53; // prize 2
+                    } else if (document.querySelector('input[name=prize3]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 89; // prize 3
+                    } else if (document.querySelector('input[name=prize4]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 125; // prize 4
+                    } else if (document.querySelector('input[name=prize5]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 161; // prize 5
+                    } else if (document.querySelector('input[name=prize6]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 197; // prize 6
+                    } else if (document.querySelector('input[name=prize7]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 233; // prize 7
+                    } else if (document.querySelector('input[name=prize8]:checked').value === "ON" && spinCount == 25) {
+                        stopAt = 269; // prize 8
+                    } else if (document.querySelector('input[name=prize9]:checked').value === "ON" && (spinCount == 5 ||
+                        spinCount == 10)) {
+                        stopAt = 305; // prize 9
+                    } else {
+                        stopAt = 341; // prize 10
+                    }*/
+                    if (randomNumer < 3) {
+                        stopAt = (326 + Math.floor((Math.random() * 34))); // Rs. 1000
+                    } else if (randomNumer == 3 || randomNumer == 4) {
+                        stopAt = (290 + Math.floor((Math.random() * 34))); // Rs 500
+                    } else if (randomNumer == 5 || randomNumer == 6) {
+                        stopAt = (254 + Math.floor((Math.random() * 34))); // Rs 250
+                    } else if (randomNumer > 6 && randomNumer < 15) {
+                        stopAt = (218 + Math.floor((Math.random() * 34))); // Rs 100
+                    } else if (randomNumer >= 15 && randomNumer < 30) {
+                        stopAt = (182 + Math.floor((Math.random() * 34))); // Rs 90
+                    } else if (randomNumer >= 30 && randomNumer < 50) {
+                        stopAt = (146 + Math.floor((Math.random() * 34))); // Rs 80
+                    } else if (randomNumer >= 50 && randomNumer < 70) {
+                        stopAt = (110 + Math.floor((Math.random() * 34))); //Rs 70
+                    } else if (randomNumer >= 70 && randomNumer < 80) {
+                        stopAt = (74 + Math.floor((Math.random() * 34))); // Rs 60
+                    } else if (randomNumer >= 80 && randomNumer < 90) {
+                        stopAt = (40 + Math.floor((Math.random() * 34))); //Rs 50
+                    } else {
+                        stopAt = Math.floor((Math.random() * 34)); //Rs 40
+                    }
+                    //var stopAt = (91 + Math.floor((Math.random() * 43)));
+
+                    // Important thing is to set the stopAngle of the animation before stating the spin.
+                    theWheel.animation.stopAngle = stopAt;
+
+                    // Disable the spin button so can't click again while wheel is spinning.
+                    document.getElementById('spin_button').src       = "spin_off.png";
+                    document.getElementById('spin_button').className = "";
+
+                    // Begin the spin animation by calling startAnimation on the wheel object.
+                    theWheel.startAnimation();
+
+                    // Set to true so that power can't be changed and spin button re-enabled during
+                    // the current animation. The user will have to reset before spinning again.
+                    wheelSpinning = true;
+                }
+            }
+
+            // -------------------------------------------------------
+            // Function for reset button.
+            // -------------------------------------------------------
+            function resetWheel()
+            {
+                // Stop and rewind the sound (stops it if still playing).
+                audio.pause();
+                audio.currentTime = 0;
+
+                // Stop and rewind the sound (stops it if already playing).
+                congratsAudio.pause();
+                congratsAudio.currentTime = 0;
+
+                theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                theWheel.draw();                // Call draw to render changes to the wheel.
+
+
+                wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+                // Light up the spin button by changing it's source image and adding a clickable class to it.
+                document.getElementById('spin_button').src = "spin_on.png";
+                document.getElementById('spin_button').className = "clickable";
+            }
+        </script>
+</body>
+</html>
