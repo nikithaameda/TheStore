@@ -325,6 +325,9 @@ background: url(images/math.jpg) no-repeat center center;
     .nav-desktop {
         display: none;
     }
+    .product-search, .product-search input {
+        width: 88%;
+    }
 }
 @media (min-width: 768px) and (max-width: 992px) {
     .app-container {
