@@ -328,6 +328,69 @@ background: url(images/math.jpg) no-repeat center center;
     .product-search, .product-search input {
         width: 88%;
     }
+    .map-image {
+        top: 48px;
+    }
+    .map-image > img {
+        width: 376px;
+    }
+    .here-image img {
+        width: 122px;
+        position: absolute;
+        top: -83px;
+        left: 116px;
+    }
+    .here-image label {
+        width: 96px;
+        position: absolute;
+        top: 47px;
+        left: 133px;
+        background: darkred;
+        color: white;
+        border-radius: 5px;
+    }
+    .arrow-image img {
+        position: absolute;
+        top: 125px;
+        width: 45px;
+        right: 69px;
+    }
+    .map-image{
+        width: 376px;
+    }
+    .here-image-recipe img {
+        width: 122px;
+        position: absolute;
+        top: -83px;
+        left: 116px;
+    }
+    .here-image-recipe label {
+        width: 96px;
+        position: absolute;
+        top: 47px;
+        left: 133px;
+        background: darkred;
+        color: white;
+        border-radius: 5px;
+    }
+    .arrow-image1 img {
+        position: absolute;
+        top: 116px;
+        width: 50px;
+        right: 60px;
+    }
+    .arrow-image2 img {
+        position: absolute;
+        top: 100px;
+        width: 50px;
+        right: 100px;
+    }
+    .arrow-image3 img {
+        position: absolute;
+        top: 100px;
+        width: 50px;
+        right: 147px;
+    }
 }
 @media (min-width: 768px) and (max-width: 992px) {
     .app-container {
