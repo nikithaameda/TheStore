@@ -296,6 +296,36 @@ background: url(images/math.jpg) no-repeat center center;
     width: 80px;
     right: 313px;
 }
+.home-mobile {
+    display: none;
+}
+.home-desktop {
+    display: flex;
+}
+.nav-desktop {
+    display: block;
+}
+@media (max-width: 768px) {
+    .home-mobile {
+        display: block;
+    }
+    .home-desktop {
+        display: none;
+    }
+    .my-image{
+        margin-bottom: 30px;
+    }
+    .app-menu-item {
+        text-align: center;
+    }
+    .app-menu-item a {
+        border-radius: 15px;
+        width: 300px;
+    }
+    .nav-desktop {
+        display: none;
+    }
+}
 @media (min-width: 768px) and (max-width: 992px) {
     .app-container {
         max-width: 100%;
