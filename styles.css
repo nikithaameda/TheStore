@@ -332,13 +332,13 @@ background: url(images/math.jpg) no-repeat center center;
         top: 48px;
     }
     .map-image > img {
-        width: 376px;
+        width: 350px;
     }
     .here-image img {
         width: 122px;
         position: absolute;
         top: -83px;
-        left: 116px;
+        left: 103px;
     }
     .here-image label {
         width: 96px;
@@ -351,18 +351,18 @@ background: url(images/math.jpg) no-repeat center center;
     }
     .arrow-image img {
         position: absolute;
-        top: 125px;
+        top: 100px;
         width: 45px;
-        right: 69px;
+        right: 58px;
     }
     .map-image{
-        width: 376px;
+        width: 350px;
     }
     .here-image-recipe img {
         width: 122px;
         position: absolute;
         top: -83px;
-        left: 116px;
+        left: 105px;
     }
     .here-image-recipe label {
         width: 96px;
@@ -375,9 +375,9 @@ background: url(images/math.jpg) no-repeat center center;
     }
     .arrow-image1 img {
         position: absolute;
-        top: 116px;
+        top: 103px;
         width: 50px;
-        right: 60px;
+        right: 51px;
     }
     .arrow-image2 img {
         position: absolute;
