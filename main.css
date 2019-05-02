@@ -80,9 +80,6 @@ td.pw3
     width: 30px;
     float: right;
 }
-
-
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -165,7 +162,6 @@ table.settings-table tr:nth-child(even) {
 }
 .spin-wheel {
     background: #f4fffc;
-    box-shadow: 1px -2px 10px 3px grey;
 }
 .spin-title { 
     text-align: left;
