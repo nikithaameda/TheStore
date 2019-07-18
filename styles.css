@@ -305,6 +305,33 @@ background: url(images/math.jpg) no-repeat center center;
 .nav-desktop {
     display: block;
 }
+.profilePicture {
+    border-radius: 25px;
+}
+.displayLogin {
+    text-transform: capitalize;
+}
+.bioList {
+    list-style: none;
+    padding: 0;
+    margin: 2% 20%;
+} 
+.bioList li {
+    padding: 10px;
+    border-bottom: 1px dotted #59bff2;
+}
+.bioList li span {
+    text-transform: capitalize;
+    color: #59bff2;
+    float: right;
+}
+.profileImg {
+    display: block;
+    margin: 20px auto;
+    border: 10px double #59bff2;
+    width: 200px;
+}
+
 @media (max-width: 768px) {
     .home-mobile {
         display: block;

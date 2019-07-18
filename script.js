@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('.animate-text').animate({"margin-left": '+=15%', "margin-right": '+=15%', "opacity": '1.0'}, "slow");
+    //text(decodeURI(location.search.split('=')[1]));
     $('.map-image').fadeIn();
     $(".js-recipe-search").click(function () {
         $(".js-recipe-suggessions").addClass("hide");
@@ -18,6 +19,16 @@ $(document).ready(function(){
                     }
                 });
             }
+    });
+
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        cache: false,
+        url: 'textTest.txt',
+        success: function (data) {
+            renderShoppingList(data);
+        }
     });
 
     $(".js-search-product").click(function () {
@@ -39,7 +50,42 @@ $(document).ready(function(){
             });
         }
     });
+
+    var clickedButton;
+    $(".login_btn").click(function(){
+        sessionStorage.clear();
+        clickedButton=true;
+        if(clickedButton) {
+            var url = "https://api.randomuser.me/"
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: 'jsonp',
+                cache:false,
+                crossDomain: true,
+                success: function (data) {
+                    /*username = data.results[0].name.first +' '+ data.results[0].name.last;
+                    profileImgPath = data.results[0].picture.thumbnail;
+                    var aboutInfo = data.results[0];
+                    sessionStorage.setItem("username", username);*/
+                    sessionStorage.profileInfo = JSON.stringify(data);
+                    if(data.results && data.results.length) {
+                        window.location.href="index.html";
+                    }
+                },
+                error: function() {
+                    alert("Unable to login");
+                }
+            });
+        } 
+    });
+    
+    $(".profilePicture").click(function(){
+        window.location.href= "about.html";
+    });
 });
+
+
 
 function renderIngredients(data) {
     $(".js-results").removeClass("hide");
@@ -62,5 +108,26 @@ function renderIngredients(data) {
         $(".js-title").html('');
         $(".js-reciperesults").html('');
         $(".js-recipe-alert").removeClass("hide");
-    }
+    }  
 }
+
+function renderShoppingList(data) {
+    var $employees=data.employees
+}
+    // for(var i=0;i<$employees.length;i++) {
+    //     alert($employees[i].firstName + ' ' + $employees[i].lastName);
+    // }
+//    for(var i=0;i<data.length;i++) {
+//     $("#myUL").append("<li>"+data[i]+"</li>");
+//     $("#myUL li").addClass("shopItems");
+//    }
+//    var myNodelist = $(".shopItems");
+//        for (var i = 0; i < myNodelist.length; i++) {
+//          var span = document.createElement("SPAN");
+//          var txt = document.createTextNode("\u00D7");
+//          span.className = "close";
+//          span.appendChild(txt);
+//          myNodelist[i].appendChild(span);
+//        }
+
+// https://api.randomuser.me/
