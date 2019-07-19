@@ -1,7 +1,3 @@
 {
-"employees":[
-    {"firstName":"John", "lastName":"Doe"}, 
-    {"firstName":"Anna", "lastName":"Smith"},
-    {"firstName":"Peter", "lastName":"Jones"}
-]
+"employees":["Eggs", "Milk", "Chocolates", "Cookies", "Flour", "raisins", "ketchup", "mayo", "Almonds", "Cashews","Eggs1", "Milk1", "Chocolates1", "Cookies1", "Flour1", "raisins1", "ketchup1", "mayo1", "Almonds1", "Cashews1", "Eggs", "Milk", "Chocolates", "Cookies", "Flour", "raisins", "ketchup", "mayo", "Almonds", "Cashews"]
 }

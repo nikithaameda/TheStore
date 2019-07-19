@@ -331,6 +331,16 @@ background: url(images/math.jpg) no-repeat center center;
     border: 10px double #59bff2;
     width: 200px;
 }
+.pagination {
+    border: 2px solid #59bff2;
+}
+.pagination li:last-child {
+    border:none;
+}
+.pagination li{ 
+    display: inline-block;
+    border-right: 2px solid #59bff2;
+}
 
 @media (max-width: 768px) {
     .home-mobile {

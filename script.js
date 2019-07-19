@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $('.animate-text').animate({"margin-left": '+=15%', "margin-right": '+=15%', "opacity": '1.0'}, "slow");
-    //text(decodeURI(location.search.split('=')[1]));
     $('.map-image').fadeIn();
     $(".js-recipe-search").click(function () {
         $(".js-recipe-suggessions").addClass("hide");
@@ -28,6 +27,9 @@ $(document).ready(function(){
         url: 'textTest.txt',
         success: function (data) {
             renderShoppingList(data);
+        },
+        error: function() {
+            alert("Unable to login");
         }
     });
 
@@ -88,6 +90,7 @@ $(document).ready(function(){
 
 
 function renderIngredients(data) {
+
     $(".js-results").removeClass("hide");
     $(".js-locate-recipe").removeClass("hide");
     if(data.meals && data.meals.length) {
@@ -110,24 +113,78 @@ function renderIngredients(data) {
         $(".js-recipe-alert").removeClass("hide");
     }  
 }
-
+var reminder;
 function renderShoppingList(data) {
-    var $employees=data.employees
-}
-    // for(var i=0;i<$employees.length;i++) {
-    //     alert($employees[i].firstName + ' ' + $employees[i].lastName);
-    // }
+    var $employees=data.employees;
+    reminder = $employees.length/10;
+    for (j=1; j<=reminder; j++) {
+        $(".pagination").append("<li>" + j + "</li>");
+    }
+    var count = $employees.length > 10 ? 10 : $employees.length;
+    for(var i=0;i<count;i++) {
+       $("#myUL").append("<li>"+$employees[i]+"</li>");
+       // previous grey out
+       $(".prevButton").css("backgroundColor", "gray");
+       $(".prevButton").attr("disabled", "true");
+       $(".pagination li:first-child").css("color","#59bff2");
+    }
+    var counter = 1;
+    //counterFunction();
+    $(".nextButton").click(function() {
+        counter++; 
+        $("#myUL").html("");
+        counterFunction();
+    });
+    
+    $(".prevButton").click(function() {
+        counter--;
+        $("#myUL").html("");
+        counterFunction();
+    });
+
+    $(".pagination li").click(function(){
+        a = $(this).text();
+        counter = a;
+        $("#myUL").html("");
+        $(".pagination li").css("color","black");
+        $(this).css("color","#59bff2");
+        counterFunction();
+     });
+
+    function counterFunction() {
+        for(var i=counter*10-10;i<counter*10;i++) {
+            $("#myUL").append("<li>"+$employees[i]+"</li>");
+        } 
+        if(counter >= reminder) { 
+            // greyout next 
+            $(".nextButton").css("backgroundColor", "gray");
+            $(".nextButton").attr("disabled", "disabled");
+            $(".prevButton").removeAttr("disabled")
+        } else if(counter<=1) {
+            $(".prevButton").css("backgroundColor", "gray");
+            $(".prevButton").attr("disabled", "disabled");
+            $(".nextButton").removeAttr("disabled");
+        } else {
+            $(".nextButton").css("backgroundColor", "#59bff2");
+            $(".prevButton").css("backgroundColor", "#59bff2");
+            $(".nextButton").removeAttr("disabled");
+            $(".prevButton").removeAttr("disabled");
+        }
+
+    }
+
+
 //    for(var i=0;i<data.length;i++) {
 //     $("#myUL").append("<li>"+data[i]+"</li>");
 //     $("#myUL li").addClass("shopItems");
 //    }
 //    var myNodelist = $(".shopItems");
-//        for (var i = 0; i < myNodelist.length; i++) {
-//          var span = document.createElement("SPAN");
-//          var txt = document.createTextNode("\u00D7");
-//          span.className = "close";
-//          span.appendChild(txt);
-//          myNodelist[i].appendChild(span);
-//        }
-
+//     for (var i = 0; i < myNodelist.length; i++) {
+//         var span = document.createElement("SPAN");
+//         var txt = document.createTextNode("\u00D7");
+//         span.className = "close";
+//         span.appendChild(txt);
+//         myNodelist[i].appendChild(span);
+//     }
+}
 // https://api.randomuser.me/
