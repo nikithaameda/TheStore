@@ -52,6 +52,19 @@ $(document).ready(function(){
             });
         }
     });
+    var url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+    $.ajax({
+            type: "GET",
+            dataType: 'json',
+            cache: false,
+            url: url,
+            success: function (data) {
+                if(data.meals && data.meals.length) {
+                    renderShop(data);
+                }
+        }
+    });
+
 
     var clickedButton;
     $(".login_btn").click(function(){
@@ -90,7 +103,6 @@ $(document).ready(function(){
 
 
 function renderIngredients(data) {
-
     $(".js-results").removeClass("hide");
     $(".js-locate-recipe").removeClass("hide");
     if(data.meals && data.meals.length) {
@@ -172,7 +184,20 @@ function renderShoppingList(data) {
         }
 
     }
+}
 
+function renderShop(data) {
+    var elements;
+        data.meals.forEach(i=>{
+        elements = '<div class="hot-offer-list">' +
+            '<img src="' + i.strMealThumb + '" width = 100% /><br />' +
+            '<label>' + i.strMeal + '</label><br />' +
+            '<label>' + i.strCategory  + '</label><br />' +
+            '<button class="button cart-button"> Add to Cart </button>' +
+        '</div>'
+        $(".store-hot-images").append(elements);
+        });
+    }
 
 //    for(var i=0;i<data.length;i++) {
 //     $("#myUL").append("<li>"+data[i]+"</li>");
@@ -186,5 +211,52 @@ function renderShoppingList(data) {
 //         span.appendChild(txt);
 //         myNodelist[i].appendChild(span);
 //     }
-}
 // https://api.randomuser.me/
+//sortTest();
+            // // console.log(sortedList);
+            // var a,b;
+            // function sortTest(a,b) {
+            //     a= data.meals[i].strMeal.toLowerCase();
+            //     b= data.meals[i+1].strMeal.toLowerCase();
+            //     if(a>b) {
+            //         //$(".sample").append(a + ",");
+            //     } else {
+            //         //$(".test").append(a+ ",");
+            //     }
+            // }
+
+            // sortedList.push(data.meals[i].strMeal);
+            // if(sortedList.sort()[i]==data.meals[i].strMeal) {
+            //     $(".store-hot-images").append(elements);
+            // } else if (sortedList.sort()[i]>data.meals[i].strMeal) {
+            //     temparr.push(data.meals[i].strMeal);
+            // }
+
+//alternate sorting
+// function renderShop(data) {
+//     var elements;
+//     if(data.meals && data.meals.length) {
+//         for(i=0;i<data.meals.length;i++) {
+//             data.meals.sort(compare);
+//             elements = '<div class="hot-offer-list">' +
+//                         '<img src="' + data.meals[i].strMealThumb + '" width = 100% /><br />' +
+//                         '<label>' + data.meals[i].strMeal + '</label><br />' +
+//                         '<label>' + data.meals[i].strCategory  + '</label><br />' +
+//                         '<button class="button cart-button"> Add to Cart </button>' +
+//                     '</div>'
+//                         //$(".store-hot-images").append(elements);
+//                        // $(".test").append(data.meals[i].strMeal)
+        
+//         $(".store-hot-images").append(elements);
+//         }
+//     }
+// }
+// function compare(a,b) {
+//     if ( a.strMeal< b.strMeal ){
+//         return -1;
+//     }
+//     if ( a.strMeal> b.strMeal){
+//     return 1;
+//     }
+//     return 0;
+//}

@@ -231,11 +231,15 @@ background: url(images/math.jpg) no-repeat center center;
 .store-hot-images {
     padding: 20px 0;
     background: #59bff2;
+    margin: 0px;
 }
 .hot-offer-list {
-    border: 1px solid black;
+    border: 4px double gray;
     text-align: center;
     background: #f4fffc;
+    width: 23%;
+    display: inline-block;
+    margin: 10px;
 }
 .map-image {
     width: 818px;
@@ -341,7 +345,6 @@ background: url(images/math.jpg) no-repeat center center;
     display: inline-block;
     border-right: 2px solid #59bff2;
 }
-
 @media (max-width: 768px) {
     .home-mobile {
         display: block;
